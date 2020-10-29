@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; img-src 'self' data:; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="static/theme.css" type="text/css">
+  <title>AquaG</title>
+</head>
+<body class="m-0">
+  <div class="h-100 w-100 p-0">
+    <div class="container h-100 w-100 p-0">
+      <div class="row h-100 p-0 m-0">
+        <div class="col-md-1 mp-menu d-print-none" style="">
+          <a class="btn btn-block btn-logo" href="#"><img src="static\logo.png" /></a>
+          <a class="btn btn-block btn-menu" href="#"><i class="fa fa-fw fa-angle-left"></i>MENU</a>
+          <div class="mp-ruler" style=""></div>
+          <a class="btn btn-block btn-mp home-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Home"><i class="fa fa-fw ml-auto mr-auto fa-home"></i></a>
+          <a class="btn btn-block btn-mp report-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Relatórios"><i class="fa fa-fw fa-paste"></i></a>
+          <a class="btn btn-block btn-mp support-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Suporte"><i class="fa fa-fw fa-support"></i></a>
+          <a class="btn btn-block btn-mp act-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Acionamento"><i class="fa fa-fw fa-podcast"></i></a>
+          <a class="btn btn-block btn-mp config-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Configurações"><i class="fa fa-fw fa-cog"></i></a>
+          <a class="btn btn-block btn-mp signup-user-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Novo Usuário"><i class="fa fa-fw fa-user-plus"></i></a>
+          <a class="btn btn-block btn-mp signup-ent-btn" href="#" style="" data-placement="right" data-toggle="tooltip" title="Novo Empreendimento"><i class="fa fa-fw fa-plus-circle"></i></a>
+        </div>
+        <div class="col-md-11 mp-content mp-view mp-focus d-print-none" style="">
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Dashboard<span class="badge badge-primary badge-pill ml-2 badge-mp">4</span><i role="button" class="fa fa-fw float-right fa-bell"></i><i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i><i role="button" class="fa fa-fw float-right fa-building"></i></h4>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Último Consumo</h5>
+                  <a href="#" class="card-link dsh_last_consum_a"><input type="text" id="dsh_last_consum" class="mpAttribute" disabled="" readonly="readonly" value="22740,69"></a>
+                  <a class="mpUnidade btn btn-mp mr-auto text-right float-right dsh_last_consum_a" href="#"><b>m<sup>3</sup></b></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Consumo Atual</h5>
+                  <a href="#" class="card-link dsh_curr_consum_a"><input type="text" id="dsh_curr_consum" class="mpAttribute" disabled="" readonly="readonly" value="1915,22"></a>
+                  <a class="mpUnidade btn btn-mp mr-auto text-right float-right dsh_curr_consum_a" href="#"><b>m<sup>3</sup></b></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Dias Corridos</h5>
+                  <a href="#" class="card-link dsh_days_a"><input type="text" id="dsh_days" class="mpAttribute" disabled="" readonly="readonly" value="14"></a>
+                  <a class="btn btn-mp mr-auto text-right float-right dsh_days_a" href="#"><i class="fa fa-fw fa-exclamation"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">Meta / Projeção</h5>
+                  <a href="#" class="card-link dsh_projection_a"><input type="text" id="dsh_projection" class="mpAttribute" disabled="" readonly="readonly" value="41215"></a>
+                  <a class="btn btn-mp mr-auto text-right float-right dsh_projection_a" href="#"><i class="fa fa-fw fa-line-chart text-success"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 p-0 pl-3 pr-2 pt-4">
+              <div class="card shadow-sm">
+                <div class="card-body p-2">
+                  <div class="mp-graph-title">Nível do Reservatório</div>
+                  <div id="main-qnt" style="width: auto; height: 300px;">
+                    <canvas id="main-graph"></canvas>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 p-0 pl-2 pr-3 pt-4" style="">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card shadow-sm" style="margin-bottom:6px;">
+                    <div class="card-body p-2">
+                      <div id="secondary-qnt" style="width: auto; height: 135px;">
+                        <canvas id="secondary-graph"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card shadow-sm" style="margin-top:6px;">
+                    <div class="card-body p-2">
+                      <div id="third-qnt" style="width: auto; height: 135px;">
+                        <canvas id="third-graph"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col p-2">
+              <div class="card shadow-sm aqua-center">
+                <div class="card-body p-2">
+                  <h5 class="card-title">Vazão Entrada <span role="button" class="inc-flux float-right dropup" ><i class="fa fa-fw fa-play-circle" id="dropdownMenuButton"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Total = P<sub>1</sub> + P<sub>2</sub></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Ponto 1</a>
+                        <a class="dropdown-item" href="#">Ponto 2</a>
+                      </div> </span></h5>
+
+                      <a href="#" class="card-link dsh_entrada_a"><input id="dsh_entrada" class="mpAttribute" readonly="readonly" value="13830,44"></a>
+                      <a class="mpUnidade btn btn-mp mr-auto text-right float-right dsh_entrada_a" href="#">
+                      <b><sup>m<sup>3</sup></sup>&#47;<sub>(h)</sub></b>
+                      </a>
+                </div>
+              </div>
+            </div>
+            <div class="col p-2">
+              <div class="card shadow-sm">
+                <div class="card-body p-2">
+                  <h5 class="card-title">Autonomia</h5>
+                  <a href="#" class="card-link dsh_autonomia_a"><input id="dsh_autonomia" class="mpAttribute" disabled="" readonly="readonly" value="1h"></a>
+                  <a class="btn btn-mp mr-auto text-right float-right dsh_autonomia_a" href="#"><i class="fa fa-fw fa-clock-o"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col p-2">
+              <div class="card shadow central-valvulas">
+                <div class="card-body p-2">
+                  <h5 class="card-title">Válvula</h5>
+                    <a class="btn btn-mp mr-auto text-secondary" href="#"><i class="fa fa-fw fa-hourglass "></i></a><a class="btn btn-mp mr-auto text-success" href="#"><i class="fa fa-fw fa-hourglass "></i></a>
+                  <a class="btn btn-mp mr-auto text-secondary " href="#"><i class="fa fa-fw fa-hourglass "></i></a><a class="btn btn-mp mr-auto text-success" href="#"><i class="fa fa-fw fa-hourglass "></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col p-2 central-bombas">
+              <div class="card shadow" role='button'>
+                <div class="card-body p-2">
+                  <h5 class="card-title">Central de Bombas <span role="button" class="inc-flux float-right" ><i class="fa fa-fw fa-play-circle"></i></span></h5>
+                  <a class="btn btn-mp mr-auto text-danger" href="#"><i class="fa fa-fw fa-plug"></i></a><a class="btn btn-mp mr-auto text-success" href="#"><i class="fa fa-fw fa-plug"></i></a>
+                  <a class="btn btn-mp mr-auto text-warning " href="#"><i class="fa fa-fw fa-plug"></i></a><a class="btn btn-mp mr-auto text-success" href="#"><i class="fa fa-fw fa-plug"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col p-2">
+              <div class="card shadow-sm">
+                <div class="card-body p-2">
+                  <h5 class="card-title">Vazão de Saida</h5>
+                    <a href="#" class="card-link dsh_saida_a"><input id="dsh_saida" class="mpAttribute" disabled="" readonly="readonly" value="1815,44"></a>
+                    <a class="mpUnidade btn btn-mp mr-auto text-right float-right dsh_saida_a" href="#">
+                    <b><sup>m<sup>3</sup></sup>&#47;<sub>(h)</sub></b>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-11 mp-vazao mp-view mp-hidden" style="" hidden='hidden'>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Central de Vazão<span role='button'><i class="play-button ml-2 fa fa-fw fa-play-circle"></i></span>
+                <span class="vazao-notification-area">
+                  <span style="">NOTIFICATION</span>
+                </span>
+                <i role="button" class="fa fa-fw float-right fa-bell"></i>
+                <i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i>
+                <i role="button" class="fa fa-fw float-right fa-building"></i>
+              </h4>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                <div class="card shadow-sm" style="margin-bottom:6px;">
+                  <div class="card-body p-2">
+                    <div id="vaz-qnt" style="width: auto; height: 500px!important;">
+                      <canvas id="vaz-qnt-graph"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-11 mp-bombas mp-view mp-hidden" style="" hidden='hidden'>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Central de Bombas<span role='button'><i class="play-button ml-2 fa fa-fw fa-play-circle"></i></span>
+                <span class="vazao-notification-area">
+                  <span style="">NOTIFICATION</span>
+                </span>
+                <i role="button" class="fa fa-fw float-right fa-bell"></i>
+                <i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i>
+                <i role="button" class="fa fa-fw float-right fa-building"></i>
+              </h4>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                <div class="card shadow-sm" style="margin-bottom:6px;">
+                  <div class="card-body p-2">
+                    <div id="action-qnt" style="width: auto; height: 500px!important;">
+                      <canvas id="action-qnt-graph"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card shadow-sm" style="margin-bottom:6px;">
+                  <div class="card-body p-2">
+                    <div id="action-tmp" style="width: auto; height: 500px!important;">
+                      <canvas id="action-tmp-graph"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-11 mp-relatorio mp-view mp-hidden" style="" hidden='hidden'>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Relatório<span class="badge badge-primary badge-pill ml-2 badge-mp"><i class="fa fa-clipboard"></i></span><i role="button" class="fa fa-fw float-right fa-bell"></i><i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i><i role="button" class="fa fa-fw float-right fa-building"></i></h4>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="row">
+            <div class = "container" >
+              <span class="relatorio-top">Período Inicial: <input type='date' class="validar-data" id='p_inicio' name='p_inicio'></span>&nbsp;&nbsp;&nbsp;
+              <span class="relatorio-top">Período Final: <input type='date' class="validar-data" id='p_final' name='p_final'></span>
+              <a href="#" class="periodo btn btn-primary btn-custom float-right mr-2" onclick="CriaPDF(true)">
+                <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon "></span>
+                Gerar relatório
+              </a>
+            </div>
+          </div>
+          <div id="relatorio-content">
+            <div class="row pt-4" id="rel-performance">
+              <div class="col-md-12 pb-10">
+                <div class="card shadow" style="">
+                  <div class="card-body p-2">
+                    <a href="#" class="periodo float-right mr-2" style="color:#12bbad;font-size: 14px;" onclick="CriaPDF('performance')">
+                      <span class="glyphicon glyphicon-ok text-primary btn-icon "></span>
+                      Gerar relatório
+                    </a>
+                    <div id="performance-content" class="ml-1">
+                      <h5 class="card-title">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <b>Performance</b>
+                      </h5>
+
+                      <div id="main-performance" style="width: auto; height: 300px;">
+                        <canvas class="mx-auto" id="main-graph-performance" style="display: block; width: 637px; height: 300px;" width="637" height="300"></canvas>
+                      </div>
+                      <br/>
+                      <div id="content-performance">
+                        <table class="mx-auto tg">
+                          <thead>
+                            <tr>
+                              <td class="tg-zv4m">Nível médio dos Reservatórios:</td>
+                              <td class="tg-zv4m" id="nmr"></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="tg-zv4m">Volume total em m³:</td>
+                              <td class="tg-zv4m" id="vtm"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Quantidade de acionamento no dia:</td>
+                              <td class="tg-zv4m" id="qad"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Quantidade de acionamento acumulado:</td>
+                              <td class="tg-zv4m" id="qaa"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Duração de acionamento no dia:</td>
+                              <td class="tg-zv4m" id="dad"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Duração de acionamento acumulado:</td>
+                              <td class="tg-zv4m" id="daa"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Medição de consumo diário:</td>
+                              <td class="tg-zv4m" id="mcd"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Medição de consumo acumulado:</td>
+                              <td class="tg-zv4m" id="mca"></td>
+                            </tr>
+                            <tr>
+                              <td class="tg-zv4m">Meta estabelecida pelo cliente:</td>
+                              <td class="tg-zv4m" id="mec"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-4" id="rel-vazao">
+              <div class="col-md-12 pb-10">
+                <div class="card shadow" style="">
+                  <div class="card-body p-2">
+                    <a href="#" class="periodo float-right mr-2" style="color:#12bbad;font-size: 14px;" onclick="CriaPDF('vazao')">
+                      <span class="glyphicon glyphicon-ok text-primary btn-icon "></span>
+                      Gerar relatório
+                    </a>
+                    <div id="vazao-content">
+                      <h5 class="card-title">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <b>Vazão</b>
+                      </h5>
+                      <div id="vazao-graph" class="ml-1 " >
+                        <label class="mx-auto pl-3">
+                          Entrada:<br/>
+                        </label>
+                        <div id="main-vazao-entrada" style="margin:auto; width: auto; height: 300px;" class="mx-auto">
+                          <canvas id="main-graph-vazao-entrada" style="display: block; width: 600px; height: 300px;" width="637" height="300" class="mx-auto"></canvas>
+                        </div>
+                        <br/>
+                        <br/>
+                        <label class="mx-auto mt-4 pl-3">
+                          Saída:<br/>
+                        </label>
+                        <div id="main-vazao-saida" style="width: auto; height: 300px;">
+                          <canvas id="main-graph-vazao-saida" style="display: block; width: 600px; height: 300px;" width="637" height="300" class="mx-auto"></canvas>
+                        </div>
+                      </div>
+                      <div id="content-vazao" style="margin: auto;">
+                        <table class="mx-auto tg" style="border-collapse:collapse; border-spacing:0; table-layout: fixed; width: 392px">
+                          <colgroup>
+                          <col style="width: 116px">
+                          <col style="width: 115px">
+                          <col style="width: 161px">
+                          </colgroup>
+                          <thead>
+                            <tr>
+                              <th class="tg-yo0i" colspan="3">Entrada</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="tg-8p3x">Data</td>
+                              <td class="tg-8p3x">Poço</td>
+                              <td class="tg-8p3x">Concessionária</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-70gx"></td>
+                              <td class="tg-70gx"></td>
+                              <td class="tg-70gx"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                        <table class="mx-auto mt-4 tg" style="border-collapse:collapse; border-spacing:0; table-layout: fixed; width: 392px">
+                          <colgroup>
+                          <col style="width: 116px">
+                          <col style="width: 115px">
+                          <col style="width: 161px">
+                          </colgroup>
+                          <thead>
+                            <tr>
+                              <th class="tg-yo0i" colspan="3">Saída</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="tg-8p3x">Data</td>
+                              <td class="tg-8p3x">Setores</td>
+                              <td class="tg-8p3x">Distintos</td>
+                            </tr>
+                            <tr>
+                              <td class="tg-70gx"></td>
+                              <td class="tg-70gx"></td>
+                              <td class="tg-70gx"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-4"  id="rel-meta">
+              <div class="col-md-12 pb-10">
+                <div class="card shadow" style="">
+                  <div class="card-body p-2">
+                    <a href="#" class="periodo float-right mr-2" style="color:#12bbad;font-size: 14px;" onclick="CriaPDF('meta-content')">
+                      <span class="glyphicon glyphicon-ok text-primary btn-icon "></span>
+                      Gerar relatório
+                    </a>
+
+                    <h5 class="card-title">
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i> <b>Performance de Meta</b>
+                    </h5>
+
+                    <div id="content-meta"></div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-4"  id="rel-consumo">
+              <div class="col-md-12 pb-10">
+                <div class="card shadow" style="">
+                  <div class="card-body p-2">
+                    <a href="#" class="periodo float-right mr-2" style="color:#12bbad;font-size: 14px;"  onclick="CriaPDF('consumo')">
+                      <span class="glyphicon glyphicon-ok text-primary btn-icon "></span>
+                      Gerar relatório
+                    </a>
+                    <h5 class="card-title">
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i> <b>Registro de Consumo</b>
+                    </h5>
+
+                    <div id="content-consumo">
+                      <div class="mt-2" id="consumo-conc-content">
+                      </div>
+                      <div class="mt-2" id="consumo-poco-content">
+                      </div>
+
+                    </div>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-4 mb-3"  id="rel-alertas">
+              <div class="col-md-12 pb-10">
+                <div class="card shadow" style="">
+                  <div class="card-body p-2">
+                    <a href="#" class="periodo float-right mr-2" style="color:#12bbad;font-size: 14px;"   onclick="CriaPDF('alertas')">
+                      <span class="glyphicon glyphicon-ok text-primary btn-icon "></span>
+                      Gerar relatório
+                    </a>
+                    <h5 class="card-title">
+                      <i class="fa fa-arrow-right" aria-hidden="true"></i> <b>Alertas</b>
+                    </h5>
+                    <div id="content-alertas"></div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-11 mp-acionamento mp-view mp-hidden" style="" hidden='hidden'>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Acionamento<span class="badge badge-primary badge-pill ml-2 badge-mp"><i class="fa fa-podcast"></i></span><i role="button" class="fa fa-fw float-right fa-bell"></i><i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i><i role="button" class="fa fa-fw float-right fa-building"></i></h4>
+            </div>
+          </div>
+          <hr class="my-4">
+
+        </div>
+        <div class="col-md-11 mp-cad-user mp-view mp-hidden" style="" hidden='hidden'>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Cadastramento de Usuário <span class="badge badge-primary"><i class="fa fa-fw fa-user-plus"></i></span><i role="button" class="fa fa-fw float-right fa-bell"></i><i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i><i role="button" class="fa fa-fw float-right fa-building"></i></h4>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="row mb-4">
+            <div class="container">
+              <div class="row">
+                <div class="order-md-1 mx-auto col-md-9">
+                  <h4 class="mb-3"><b>Informações de Conta</b></h4>
+                  <form class="needs-validation" novalidate="">
+                    <div class="row">
+                      <div class="col-md-5 mb-3"> <label for="nomeU">Nome Completo</label>
+                        <input type="text" class="form-control" id="nomeU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um nome completo válido. </div>
+                      </div>
+                      <div class="col-md-3 mb-3"> <label for="tipo_pessoaU">Tipo de Pessoa</label> <select class="custom-select d-block w-100" id="tipo_pessoaU" required="">
+                          <option value="">Escolha...</option>
+                          <option value="INTE">Integrador</option>
+                          <option value="LICE">Licenciado</option>
+                          <option value="GEST">Gestor</option>
+                          <option value="USER">Usuário</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, escolha um tipo de pessoa válido. </div>
+                      </div>
+                      <div class="row ml-1 mt-3">
+                        <div class="col-md-11">
+                          <div class="form-group row"><label class="col-10">É da administração:</label>
+                            <div class="col-2">
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="is_staffU" value="on"> <label class="custom-control-label mb-3" for="is_staffU"></label> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 mb-3"> <label for="usernameU">ID do Usuário</label>
+                        <input type="text" class="form-control" id="usernameU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um ID valido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="emailU">E-mail</label>
+                        <input type="text" class="form-control" id="emailU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um e-mail válido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="passwordU">Senha</label>
+                        <input type="text" class="form-control" id="passwordU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva uma senha válida. </div>
+                      </div>
+                    </div>
+                    <h4 class="mb-3"><b>Informações Pessoais</b></h4>
+                    <div class="row">
+                      <div class="col-md-3 mb-3"> <label for="celularU">Celular</label>
+                        <input type="text" class="form-control" id="celularU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um celular válido. </div>
+                      </div>
+                      <div class="col-md-3 mb-3"> <label for="telefoneU">Telefone</label>
+                        <input type="text" class="form-control" id="telefoneU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um telefone válido. </div>
+                      </div>
+                      <div class="col-md-3 mb-3"> <label for="cpfU">CPF / CNPJ</label>
+                        <input type="text" class="form-control" id="cpfU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um CPF/CNPJ válido. </div>
+                      </div>
+                      <div class="col-md-3 mb-3"> <label for="rgU">RG</label>
+                        <input type="text" class="form-control" id="rgU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um RG válido. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="mb-3 col-md-7"> <label for="enderecoU">Endereço</label>
+                        <input type="text" class="form-control" id="enderecoU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um endereço válido. </div>
+                      </div>
+                      <div class="col-md-2 ml-0 mb-3"> <label for="numeroU">Número</label>
+                        <input type="text" class="form-control" id="numeroU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um número válido. </div>
+                      </div>
+
+                      <div class="col-md-3 mb-3"> <label for="bairroU">Bairro</label>
+                        <input type="text" class="form-control" id="bairroU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um bairro válido. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 mb-3"> <label for="cidadeU">Cidade</label>
+                        <input type="text" class="form-control" id="cidadeU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva uma cidade válida. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="estadoU">Estado</label>
+                        <input type="text" class="form-control" id="estadoU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um estado válido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="paisU">País</label>
+                        <input type="text" class="form-control" id="paisU" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um país válido. </div>
+                      </div>
+                    </div>
+                    <h4 class="mb-3"><b>Permissões</b></h4>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="pode_cadastrar_usuario" value="on"> <label class="custom-control-label mb-3" for="pode_cadastrar_usuario"></label> </div>
+                          </div><label class="col-8">Cadastrar usuários</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_acessar_central_alarmes" value="on"> <label class="custom-control-label mb-3" for="pode_acessar_central_alarmes"></label> </div>
+                          </div><label class="col-8">Acessar a central de alarmes</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_acessar_painel_principal" value="on"> <label class="custom-control-label mb-3" for="pode_acessar_painel_principal"></label> </div>
+                          </div><label class="col-8">Visualizar o painel principal</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_acessar_central_vazao" value="on"> <label class="custom-control-label mb-3" for="pode_acessar_central_vazao"></label> </div>
+                          </div><label class="col-8">Acessar a central de vazão</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_gerar_relatorios" value="on"> <label class="custom-control-label mb-3" for="pode_gerar_relatorios"></label> </div>
+                          </div><label class="col-8">Gerar relatórios</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_acessar_central_bomba" value="on"> <label class="custom-control-label mb-3" for="pode_acessar_central_bomba"></label> </div>
+                          </div><label class="col-8">Acessar a central de bomba</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_fazer_acionamentos" value="on"> <label class="custom-control-label mb-3" for="pode_fazer_acionamentos"></label> </div>
+                          </div><label class="col-8">Fazer acionamentos</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_enviar_mensagem" value="on"> <label class="custom-control-label mb-3" for="pode_enviar_mensagem"></label> </div>
+                          </div><label class="col-8">Enviar mensagem</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_editar_cadastro_tecnico" value="on"> <label class="custom-control-label mb-3" for="pode_editar_cadastro_tecnico"></label> </div>
+                          </div><label class="col-8">Editar cadastro técnico</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_visualizar_relatorios" value="on"> <label class="custom-control-label mb-3" for="pode_visualizar_relatorios"></label> </div>
+                          </div><label class="col-8">Visualizar relatórios</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-1">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="pode_alterar_meta" value="on"> <label class="custom-control-label mb-3" for="pode_alterar_meta"></label> </div>
+                          </div><label class="col-8">Alterar meta</label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="mb-4">
+                    <div class="mx-auto col-md-9"> <button class="btn btn-success btn-lg btn-block mb-6 cad-user-to-ent-btn" type="submit">Cadastrar Usuário e seguir para Cadastro de Empreendimento</button>
+                    </div>
+                    <div class="mx-auto px-5 col-md-5"> <button class="btn btn-lg btn-block btn-primary mt-3" type="submit">Cadastrar Usuário</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-11 mp-cad-emp mp-view mp-hidden" style="" hidden='hidden'>
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="card-title">Cadastramento de Empreendimento <span class="badge badge-primary"><i class="fa fa-fw fa-plus-circle"></i></span><i role="button" class="fa fa-fw float-right fa-bell"></i><i role="button" class="fa fa-fw float-right fa-calendar mr-1"></i><i role="button" class="fa fa-fw float-right fa-building"></i></h4>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="row mb-4">
+            <div class="container">
+              <div class="row">
+                <div class="order-md-1 mx-auto col-md-9">
+                  <h4 class="mb-3"><b>Informações de Conta</b></h4>
+                  <form class="needs-validation" novalidate="">
+                    <div class="row">
+                      <div class="col-md-4 mb-3"> <label for="tipo_classificacao">Classificação do Empreendimento</label>
+                        <select class="custom-select d-block w-100" id="tipo_classificacao" required="">
+                          <option value="">Escolha...</option>
+                          <option value="HOSP">HOSPITAL</option>
+                          <option value="HOTE">HOTEL</option>
+                          <option value="RESI">RESIDENCIAL</option>
+                        </select>
+                        <div class="invalid-feedback"> Escolha uma classificação válida. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="tipo_servico">Plano</label>
+                        <select class="custom-select d-block w-100" id="tipo_servico" required="">
+                          <option value="">Escolha...</option>
+                          <option value="STAN">STANDARD</option>
+                          <option value="ULTR">ULTRA</option>
+                          <option value="PREM">PREMIUM</option>
+                        </select>
+                        <div class="invalid-feedback"> Escolha um tipo válido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="prazo_contratual">Prazo Contratual</label> <select class="custom-select d-block w-100" id="prazo_contratual" required="">
+                        <option value="">Escolha...</option>
+                          <option value="ANUA">ANUAL</option>
+                          <option value="TRIE">TRIENAL</option>
+                          <option value="QUIN">QUINQUENAL</option>
+                      </select>
+                      <div class="invalid-feedback"> Please select a valid country. </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-3"> <label for="nomeEmpreendimento">Nome do Empreendimento</label>
+                        <input type="text" class="form-control" id="nomeEmpreendimento" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um nome válido. </div>
+                      </div>
+                      <div class="col-md-6 mb-3"> <label for="cnpj">CNPJ</label>
+                        <input type="text" class="form-control" id="cnpj" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um CNPJ válido. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 mb-3"> <label for="matricula">Matrícula da Concessionária</label>
+                        <input type="text" class="form-control" id="matricula" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva uma matrícula válida. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="cicloCobranca">Ciclo de Cobrança</label>
+                        <input type="text" class="form-control" id="cicloCobranca" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um ciclo válido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="responsavel">Responsáveis</label>
+                        <select class="custom-select d-block w-100" id="responsavel" required="">
+                          <option value="">Escolha...</option>
+                        </select>
+                        <div class="invalid-feedback"> Escolha responsáveis válidos. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                    <h4 class="mb-3"><b>Informações de Localização</b></h4>
+                    <div class="row">
+                      <div class="mb-3 col-md-6"> <label for="endereco">Endereço</label>
+                        <input type="text" class="form-control" id="endereco" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um endereço válido. </div>
+                      </div>
+                      <div class="ml-0 mb-3 col-md-2"> <label for="numero">Número</label>
+                        <input type="text" class="form-control" id="numero" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um número válido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="bairro">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um bairro válido. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 mb-3"> <label for="cidade">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva uma cidade válida. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="estado">Estado</label>
+                        <input type="text" class="form-control" id="estado" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um estado válido. </div>
+                      </div>
+                      <div class="col-md-4 mb-3"> <label for="pais">País</label>
+                        <input type="text" class="form-control" id="pais" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um país válido. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                    <h4 class="mb-3"><b>Informações sobre o Reservatório</b></h4>
+                    <div class="row" style="">
+                      <div class="mb-3 col-md-2"> <label for="alturaReservatorio">Altura (em m)</label>
+                        <input type="text" class="form-control" id="alturaReservatorio" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva uma altura válida. </div>
+                      </div>
+                      <div class="col-md-2 mb-3"> <label for="volReservatorio">Volume (em m³)</label>
+                        <input type="text" class="form-control" id="volReservatorio" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva um volume válido. </div>
+                      </div>
+                      <div class="mb-3 col-md-2"> <label for="meta">Meta (em m³)</label>
+                        <input type="text" class="form-control" id="meta" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva uma meta válida. </div>
+                      </div>
+                      <div class="mb-3 col-md-3"> <label for="qtdPontosEntrada">Pontos de Entrada</label>
+                        <input type="text" class="form-control" id="qtdPontosEntrada" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade de pontos de entrada válida. </div>
+                      </div>
+                      <div class="mb-3 col-md-3"> <label for="qtdPontosConsumo">Pontos de Consumo</label>
+                        <input type="text" class="form-control" id="qtdPontosConsumo" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade de pontos de consumo válida. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="mb-3 col-md-5"> <label for="qtdUnidadeConsumidora">Quantidade de Unidade Consumidora</label>
+                        <input type="text" class="form-control" id="qtdUnidadeConsumidora" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade de unidades consumidoras válida. </div>
+                      </div>
+                      <div class="col-md-3 mb-3 ml-3"> <label for="qtdReservatorioSup" class="ml-1">Quantidade Superior</label>
+                        <input type="text" class="form-control ml-1" id="qtdReservatorioSup" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade do reservatório superior válida. </div>
+                      </div>
+                      <div class="col-md-3 ml-4 mb-3"> <label for="qtdReservatorioInf">Quantidade Inferior</label>
+                        <input type="text" class="form-control" id="qtdReservatorioInf" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade do reservatório inferior válida. </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group row">
+                          <div class="col-2">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="setCentralAguaQuente" value="on"> <label class="custom-control-label mb-3" for="setCentralAguaQuente"></label> </div>
+                          </div><label class="col-10">Central de Água quente </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group row">
+                          <div class="col-2">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="setVazaoAutomatizado" value="on"> <label class="custom-control-label mb-3" for="setVazaoAutomatizado"></label> </div>
+                          </div><label class="col-10">Controle de Vazão automatizado</label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group row">
+                          <div class="col-2">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="setMedicaoEfluentes" value="on"> <label class="custom-control-label mb-3" for="setMedicaoEfluentes"></label> </div>
+                          </div><label class="col-10">Medição de efluentes </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3"> <label for="qtdBombas">Quantidade de bombas </label>
+                        <input type="text" class="form-control" id="qtdBombas" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Valid last name is required. </div>
+                      </div>
+                    </div>
+                    <div class="row ml-4">
+                      <div class="col-md-4 mt-3">
+                        <div class="form-group row">
+                          <div class="col-2">
+                            <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                              <input type="checkbox" class="custom-control-input" id="setValvula" value="on"> <label class="custom-control-label mb-3" for="setValvula"></label> </div>
+                          </div>
+                          <label class="col-10">Possui válvula de controle</label>
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-4"> <label for="qtdValvula">Quantidade de válvulas</label><input type="text" class="form-control" id="qtdValvula" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade de válvulas consumo válida. </div>
+                      </div>
+                      <div class="col-md-4"></div>
+                    </div>
+                    <div class="row ml-4">
+                      <div class="col-md-4">
+                        <div class="form-group row"><div class="col-2">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="setAguaAlternativa" value="on"> <label class="custom-control-label mb-3" for="setAguaAlternativa"></label> </div>
+                          </div>
+                          <label class="col-10">Possui água alternativa:&nbsp;</label>
+
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-4"> <label for="qtdAguaAlternativa">Quantidade de Água Alternativa</label><input type="text" class="form-control" id="qtdAguaAlternativa" placeholder="" value="" required="">
+                        <div class="invalid-feedback"> Escreva a quantidade de água alternativa válida. </div>
+                      </div>
+                      <div class="mb-3 col-md-4"> <label for="aguaAlternFornecida">Água Alternativa Fornecida</label>
+                        <div class="form-group row">
+                          <div class="col-10"><input type="text" class="form-control" id="aguaAlternFornecida" placeholder="" value="" required=""></div>
+                        </div>
+                        <div class="invalid-feedback"> Escreva a quantidade de água alternativa fornecida válida. </div>
+                      </div>
+                    </div>
+                    <hr class="mb-4">
+                    <div class="mx-auto col-md-5">
+                      <button class="btn btn-success btn-lg btn-block" type="submit">Cadastrar Empreendimento</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="show-menu d-print-none" data-placement="right" data-toggle="tooltip" title="Mostrar Menu"></div>
+  <div class="mpAlert d-print-none">
+  <div class="close">x</div>
+    <input type="text" class="title" disabled="" readonly="readonly" value="Titulo">
+    <textarea type="text" class="content" disabled="" readonly="readonly" value="Mensagem">
+    </textarea>
+  </div>
+
+  <script src="static/script/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+  <script src="static/script/popper.min.js"></script>
+  <script src="static/script/bootstrap.min.js" style=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+  <script type="text/javascript" src="static/script/scripts.js"></script>
+  <script type="text/javascript" src="static/script/relatorio.js"></script>
+  <script type="text/javascript" src="https://www.chartjs.org/samples/latest/utils.js"></script>
+  <script type="text/javascript" src="static/script/model.js"></script>
+  <script type="text/javascript" src="static/script/template.js"></script>
+  <script type="text/javascript" src="static/script/view.js"></script>
+</body>
+
+</html>

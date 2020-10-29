@@ -1,0 +1,55 @@
+input "lista de medidores por usuário"
+{
+  "user_id": "id do usuário",
+}
+
+output "array de medidores"
+{
+  "medidores": [
+    {
+      "medidor_id": "id do medidor",
+      "vazao_entrada": "entrada",
+      "autonomia": "autonomia",
+      "status_valvula": "valvula",
+      "status_bomba": "bomba",
+      "vazao_saida": "saida",
+      "data_fechamento": "data",
+    },
+  ],
+}
+
+-----------------------
+input "Consumo Atual"
+{
+  "medidor_id": "id do medidor",
+  "data_ini": "Data Pós Fechamento (mm/dd/yyyy/hh:mm)",
+  "data_fim": "Data Atual/Horário",
+}
+
+output
+{
+  "valor": "Valor do Consumo",  
+}
+
+------------------------
+input "ultimo consumo"
+{
+  "medidor_id": "x",
+}
+
+------------------------
+output
+{
+  "valor": "Ultimo Consumo",
+}
+
+------------------------
+input "vazao de entrada"
+{
+  "medidor_id": "valor"
+}
+output
+{
+  "valor": "Valor do Consumo",  
+}
+

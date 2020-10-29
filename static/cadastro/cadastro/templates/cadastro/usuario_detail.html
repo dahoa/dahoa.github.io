@@ -1,0 +1,19 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+    <p>Nome {{ usuario.nome }}</p>
+    <p>ID do Usuário: {{ usuario.username }}</p>
+    <p>Tipo de pessoa: {{ usuario.tipo_pessoa }}</p>
+    <p>RG: {{ usuario.rg }}</p>
+    <p>CPF: {{ usuario.cpf }}</p>
+    <p>E-mail: {{ usuario.email }}</p>
+    <p>Telefone: {{ usuario.telefone }}</p>
+    <p>Endereço: {{ usuario.endereco }}</p>
+    <p>Número: {{ usuario.numero }}</p>
+    <p>Cidade: {{ usuario.cidade }}</p>
+    <p>Bairro: {{ usuario.bairro }}</p>
+    <p>Estado: {{ usuario.estado }}</p>
+    <p>País: {{ usuario.pais|linebreaksbr}}</p>
+
+{% endblock %}

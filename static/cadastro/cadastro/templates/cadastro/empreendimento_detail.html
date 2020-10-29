@@ -1,0 +1,29 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+    <p>Nome do Empreendimento {{ empreendimento.nomeEmpreendimento }}</p>
+    <p>CNPJ: {{ empreendimento.cnpj }}</p>
+    <p>Endereço: {{ empreendimento.endereco }}</p>
+    <p>Matrícula: {{ empreendimento.matricula }}</p>
+    <p>Celular: {{ empreendimento.celular }}</p>
+    <p>Telefone: {{ empreendimento.telefone }}</p>
+    <p>Responsável: {{ empreendimento.responsavel }}</p>
+    <p>Ciclo de Cobrança: {{ empreendimento.cicloCobranca }}</p>
+    <p>Classificação: {{ empreendimento.tipo_classificacao }}</p>
+    <p>Tipo de Serviço: {{ empreendimento.tipo_servico }}</p>
+    <p>Quantidade do Reservatório Inferior: {{ empreendimento.qtdReservatorioInf }}</p>
+    <p>Quantidade do Reservatório Superior: {{ empreendimento.qtdReservatorioSup }}</p>
+    <p>Possui válvula de controle: {{ empreendimento.setValvula }}</p>
+    <p>Quantidade de Válvula: {{ empreendimento.qtdValvula }}</p>
+    <p>Volume dos Reservatórios: {{ empreendimento.volReservatorio }}</p>
+    <p>Tem água alternativa: {{ empreendimento.setAguaAlternativa }}</p>
+    <p>Quantidade de Água Alternativa: {{ empreendimento.qtdAguaAlternativa }}</p>
+    <p>Altura do Reservatório: {{ empreendimento.alturaReservatorio }}</p>
+    <p>Pontos de Entrada: {{ empreendimento.qtdPontosEntrada }}</p>
+    <p>Pontos de Consumo: {{ empreendimento.qtdPontosConsumo }}</p>
+    <p>Quantidade de Unidade Consumidora: {{ empreendimento.qtdUnidadeConsumidora }}</p>
+    <p>Meta: {{ empreendimento.meta }}</p>
+    <p>Quantidade de Água Alternativa Fornecida : {{ empreendimento.aguaAlternFornecida|linebreaksbr}}</p>
+
+{% endblock %}

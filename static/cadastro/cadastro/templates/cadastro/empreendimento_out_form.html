@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <title>Cadastro</title>
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body class="bg-light">
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-md-7 mx-auto"> <i class="fa d-block fa-bullseye fa-5x mb-4 text-info"></i>
+          <h2><b>Cadastro</b></h2>
+          <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="container">
+      <div class="row">
+        <div class="order-md-1 mx-auto col-md-9">
+          <h4 class="mb-3"><b>Informações de Conta</b></h4>
+          <form class="needs-validation" novalidate="">
+            <div class="row">
+              <div class="col-md-6 mb-3"> <label for="tipo_classificacao">Classificação do Empreendimento</label>
+                <select class="custom-select d-block w-100" id="tipo_classificacao" required="">
+                  <option value="">Escolha...</option>
+                  <option value="HOSP">HOSPITAL</option>
+                  <option value="HOTE">HOTEL</option>
+                  <option value="RESI">RESIDENCIAL</option>
+                </select>
+                <div class="invalid-feedback"> Escolha uma classificação válida. </div>
+              </div>
+              <div class="col-md-6 mb-3"> <label for="tipo_servico">Tipo de Serviço</label>
+                <select class="custom-select d-block w-100" id="tipo_servico" required="">
+                  <option value="">Escolha...</option>
+                  <option value="STAN">STANDARD</option>
+                  <option value="ULTR">ULTRA</option>
+                  <option value="PREM">PREMIUM</option>
+                </select>
+                <div class="invalid-feedback"> Escolha um tipo válido. </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3"> <label for="nomeEmpreendimento">Nome do Empreendimento</label>
+                <input type="text" class="form-control" id="nomeEmpreendimento" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um nome válido. </div>
+              </div>
+              <div class="col-md-6 mb-3"> <label for="cnpj">CNPJ</label>
+                <input type="text" class="form-control" id="cnpj" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um CNPJ válido. </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-3"> <label for="matricula">Matrícula da Concessionária</label>
+                <input type="text" class="form-control" id="matricula" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva uma matrícula válida. </div>
+              </div>
+              <div class="col-md-4 mb-3"> <label for="cicloCobranca">Ciclo de Cobrança</label>
+                <input type="text" class="form-control" id="cicloCobranca" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um ciclo válido. </div>
+              </div>
+              <div class="col-md-4 mb-3"> <label for="responsavel">Responsáveis</label>
+                <select class="custom-select d-block w-100" id="responsavel" required="">
+                  <option value="">Escolha...</option>
+                </select>
+                <div class="invalid-feedback"> Escolha responsáveis válidos. </div>
+              </div>
+            </div>
+            <div class="row">
+            </div>
+            <h4 class="mb-3"><b>Informações de Localização</b></h4>
+            <div class="row">
+              <div class="mb-3 col-md-6"> <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="endereco" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um endereço válido. </div>
+              </div>
+              <div class="ml-0 mb-3 col-md-2"> <label for="numero">Número</label>
+                <input type="text" class="form-control" id="numero" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um número válido. </div>
+              </div>
+              <div class="col-md-4 mb-3"> <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um bairro válido. </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-3"> <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva uma cidade válida. </div>
+              </div>
+              <div class="col-md-4 mb-3"> <label for="estado">Estado</label>
+                <input type="text" class="form-control" id="estado" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um estado válido. </div>
+              </div>
+              <div class="col-md-4 mb-3"> <label for="pais">País</label>
+                <input type="text" class="form-control" id="pais" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um país válido. </div>
+              </div>
+            </div>
+            <div class="row">
+            </div>
+            <h4 class="mb-3"><b>Informações sobre o Reservatório</b></h4>
+            <div class="row" style="">
+              <div class="mb-3 col-md-2"> <label for="alturaReservatorio">Altura (em m)</label>
+                <input type="text" class="form-control" id="alturaReservatorio" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva uma altura válida. </div>
+              </div>
+              <div class="col-md-2 mb-3"> <label for="volReservatorio">Volume (em m³)</label>
+                <input type="text" class="form-control" id="volReservatorio" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva um volume válido. </div>
+              </div>
+              <div class="mb-3 col-md-2"> <label for="meta">Meta (em m³)</label>
+                <input type="text" class="form-control" id="meta" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva uma meta válida. </div>
+              </div>
+              <div class="mb-3 col-md-3"> <label for="qtdPontosEntrada">Pontos de Entrada</label>
+                <input type="text" class="form-control" id="qtdPontosEntrada" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade de pontos de entrada válida. </div>
+              </div>
+              <div class="mb-3 col-md-3"> <label for="qtdPontosConsumo">Pontos de Consumo</label>
+                <input type="text" class="form-control" id="qtdPontosConsumo" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade de pontos de consumo válida. </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-5"> <label for="qtdUnidadeConsumidora">Quantidade de Unidade Consumidora</label>
+                <input type="text" class="form-control" id="qtdUnidadeConsumidora" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade de unidades consumidoras válida. </div>
+              </div>
+              <div class="col-md-3 mb-3 ml-3"> <label for="qtdReservatorioSup" class="ml-1">Quantidade Superior</label>
+                <input type="text" class="form-control ml-1" id="qtdReservatorioSup" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade do reservatório superior válida. </div>
+              </div>
+              <div class="col-md-3 ml-4 mb-3"> <label for="qtdReservatorioInf">Quantidade Inferior</label>
+                <input type="text" class="form-control" id="qtdReservatorioInf" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade do reservatório inferior válida. </div>
+              </div>
+            </div>
+            <div class="row ml-4">
+              <div class="col-md-4 mt-3">
+                <div class="form-group row"><label class="col-10">Possui válvula de controle</label>
+                  <div class="col-2">
+                    <div class="custom-control custom-checkbox" style="	box-shadow: 0px 0px   black;">
+                      <input type="checkbox" class="custom-control-input" id="setValvula" value="on"> <label class="custom-control-label mb-3" for="setValvula"></label> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-md-4"> <label for="qtdValvula">Quantidade de válvulas</label><input type="text" class="form-control" id="qtdValvula" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade de válvulas consumo válida. </div>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+            <div class="row ml-4">
+              <div class="col-md-4">
+                <div class="form-group row"><label class="col-10">Possui água alternativa:&nbsp;</label>
+                  <div class="col-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="setAguaAlternativa" value="on"> <label class="custom-control-label mb-3" for="setAguaAlternativa"></label> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-md-4"> <label for="qtdAguaAlternativa">Quantidade de Água Alternativa</label><input type="text" class="form-control" id="qtdAguaAlternativa" placeholder="" value="" required="">
+                <div class="invalid-feedback"> Escreva a quantidade de água alternativa válida. </div>
+              </div>
+              <div class="mb-3 col-md-4"> <label for="aguaAlternFornecida">Água Alternativa Fornecida</label>
+                <div class="form-group row">
+                  <div class="col-10"><input type="text" class="form-control" id="aguaAlternFornecida" placeholder="" value="" required=""></div>
+                </div>
+                <div class="invalid-feedback"> Escreva a quantidade de água alternativa fornecida válida. </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-success btn-lg btn-block mb-2" type="submit">Finalizar cadastro de Empreendimento</button><button class="btn btn-lg btn-block btn-primary" type="submit">Cadastrar Usuário</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5 text-muted text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 my-4">
+          <p class="mb-1">© AQUAG</p>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#">Privacy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Support</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="assets/js/validation.js"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+</body>
+
+</html>
