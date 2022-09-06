@@ -3,8 +3,8 @@ var color = Chart.helpers.color;
 var mockData = {
   labels: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
 		datasets: [{
-			backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-			borderColor: window.chartColors.red,
+			backgroundColor: color('red').alpha(0.5).rgbString(),
+			borderColor: color('red'),
 			borderWidth: 1,
 			data: [
 				Math.abs(randomScalingFactor()),
