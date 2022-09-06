@@ -22,8 +22,8 @@ var vazaoEntrada = {
   labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
     datasets: [{
       label: 'Poço',
-      backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-      borderColor: window.chartColors.red,
+      backgroundColor: color('red').alpha(0.5).rgbString(),
+      borderColor: color('red'),
       borderWidth: 1,
       data: [
         Math.abs(randomScalingFactor()),
@@ -37,8 +37,8 @@ var vazaoEntrada = {
     },
     {
       label: 'Concessionária',
-      backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-      borderColor: window.chartColors.blue,
+      backgroundColor: color('red').alpha(0.5).rgbString(),
+      borderColor: color('blue'),
       borderWidth: 1,
       data: [
         Math.abs(randomScalingFactor()),
@@ -56,8 +56,8 @@ var vazaoSaida = {
 labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
   datasets: [{
 	label: 'Setores',
-	backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-	borderColor: window.chartColors.green,
+	backgroundColor: color('green').alpha(0.5).rgbString(),
+	borderColor: color('green'),
 	borderWidth: 1,
 	data: [
 	  Math.abs(randomScalingFactor()),
@@ -71,8 +71,8 @@ labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
   },
   {
 	label: 'Distintos',
-	backgroundColor: color(window.chartColors.yellow).alpha(0.5).rgbString(),
-	borderColor: window.chartColors.yellow,
+	backgroundColor: color('yellow').alpha(0.5).rgbString(),
+	borderColor: color('yellow'),
 	borderWidth: 1,
 	data: [
 	  Math.abs(randomScalingFactor()),
@@ -90,8 +90,8 @@ var meta = {
   labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
 	datasets: [{
 	  label: 'Meta Definida',
-	  backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
-	  borderColor: window.chartColors.green,
+	  backgroundColor: color('green').alpha(0.5).rgbString(),
+	  borderColor: color('green'),
 	  borderWidth: 1,
 	  data: [
 		Math.abs(randomScalingFactor()),
